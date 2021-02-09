@@ -1,0 +1,6 @@
+output/
+temp/
+inputFrames/
+__pycache__/
+emote_maker.egg-info/
+venv/
