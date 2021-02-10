@@ -83,9 +83,8 @@ class EmoteMaker:
         for file in os.listdir(path):
             os.remove(os.path.join(path, file))
 
-    @staticmethod
-    def determine_framerate() -> int:
-        return round(1 / EmoteMaker.desired_frame_delay)
+    def determine_framerate(self) -> int:
+        return round(1 / self.desired_frame_delay)
 
     def build_framestrip(self, basename: str) -> None:
         frame_size = EmoteMaker.get_image_size(
@@ -120,7 +119,7 @@ class EmoteMaker:
         loop_param = f" -plays {self.number_of_loops} -vf setpts=PTS-STARTPTS"
 
         param = (
-            f" -framerate {EmoteMaker.determine_framerate()}"
+            f" -framerate {self.determine_framerate()}"
             f" -i {os.path.join(PATH_FOLDER_WORKING_COPY, '%03d.png')}{loop_param}"
             f" -f apng {os.path.join(PATH_FOLDER_OUTPUT, name)}"
         )
@@ -226,7 +225,7 @@ def main() -> int:
         print(f"Setting frame delay to {args.d}s")
         em.desired_frame_delay = float(args.d)
 
-    if args.r and args.r:
+    if args.r:
         print("Reversing animation")
         em.reverse_animation = True
 
