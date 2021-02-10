@@ -1,6 +1,7 @@
 import argparse
 import imghdr
 import os
+import shutil
 import struct
 import subprocess
 import time
@@ -31,10 +32,8 @@ class EmoteMaker:
         if not os.path.exists(PATH_FOLDER_WORKING_COPY):
             os.mkdir(PATH_FOLDER_WORKING_COPY)
 
-        if os.path.isfile(os.path.join(CWD, "ffmpeg.exe")):
-            self.program = os.path.join(CWD, "ffmpeg")
-        else:
-            self.program = "ffmpeg"
+        self.program = shutil.which("ffmpeg")
+        assert self.program, "failed to find ffmpeg"
 
     @staticmethod
     def create_filename(filename: str) -> str:
