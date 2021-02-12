@@ -5,6 +5,10 @@ It creates a framestrip and apng for the original resolution of images used as i
 i.e. if the input is 128px it creates a 128px, 64px and 32px framestrip and apng version.
 
 EmoteMaker also supports setting the animation speed for the apng.
+
+## How to?
+The [wiki](https://github.com/MemeLabs/EmoteMaker/wiki) contains a detailed explanation of usage
+
 ## Requirements
 - Python 3.7+
 - FFmpeg
