@@ -157,6 +157,7 @@ class EmoteMaker:
             self.build_framestrip(basename)
             # create apng
             self.build_apng(basename)
+            self.cleanup(PATH_FOLDER_WORKING_COPY)
 
 
 def print_examples() -> None:
