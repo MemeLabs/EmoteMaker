@@ -125,7 +125,7 @@ class EmoteMaker:
         subprocess.call(self.program + param, shell=True)
 
     def create_working_image(self, factor_scaling: float) -> None:
-        files = os.listdir(PATH_FOLDER_INPUT)
+        files = sorted(os.listdir(PATH_FOLDER_INPUT))
 
         if self.reverse_animation:
             files.reverse()
