@@ -98,9 +98,9 @@ class EmoteMaker:
         count = len(os.listdir(PATH_FOLDER_WORKING_COPY))
         name = f"{basename}_{str(frame_size[1])}.png"
         param = (
-            f" -i {os.path.join(PATH_FOLDER_WORKING_COPY, '%03d.png')}"
+            f" -i \"{os.path.join(PATH_FOLDER_WORKING_COPY, '%03d.png')}\""
             f" -filter_complex scale={str(frame_size[0])}:-1,"
-            f"tile={str(count)}x1 {os.path.join(PATH_FOLDER_OUTPUT, name)}"
+            f"tile={str(count)}x1 \"{os.path.join(PATH_FOLDER_OUTPUT, name)}\""
         )
         subprocess.call(self.program + param, shell=True)
 
@@ -119,8 +119,8 @@ class EmoteMaker:
 
         param = (
             f" -framerate {self.determine_framerate()}"
-            f" -i {os.path.join(PATH_FOLDER_WORKING_COPY, '%03d.png')}{loop_param}"
-            f" -f apng {os.path.join(PATH_FOLDER_OUTPUT, name)}"
+            f" -i \"{os.path.join(PATH_FOLDER_WORKING_COPY, '%03d.png')}\"{loop_param}"
+            f" -f apng \"{os.path.join(PATH_FOLDER_OUTPUT, name)}\""
         )
         subprocess.call(self.program + param, shell=True)
 
